@@ -34,7 +34,7 @@ namespace Albums.Controllers
             {
                 _context.Albums.Add(album);
                 await _context.SaveChangesAsync();
-                return View(RedirectToAction("index"));
+                return RedirectToAction("index");
             }
             return View(album);
         }
