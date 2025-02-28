@@ -56,5 +56,23 @@ namespace Albums.Controllers
             }
             return View(album);
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var album = await _context.Albums.FirstOrDefaultAsync(a => a.Id == id);
+            return View(album);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var album = await _context.Albums.FindAsync(id);
+            if (album is not null)
+            {
+                _context.Albums.Remove(album);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
