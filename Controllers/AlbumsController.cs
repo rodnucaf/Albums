@@ -39,6 +39,10 @@ namespace Albums.Controllers
             return View(album);
         }
 
-
+        public async Task<IActionResult> Edit(int id)
+        { 
+            var album = await _context.Albums.FirstOrDefaultAsync(a => a.Id == id);
+            return View(album);
+        }
     }
 }
