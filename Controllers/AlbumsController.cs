@@ -44,5 +44,16 @@ namespace Albums.Controllers
             var album = await _context.Albums.FirstOrDefaultAsync(a => a.Id == id);
             return View(album);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Date")]Album album)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(album);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(album);
     }
 }
