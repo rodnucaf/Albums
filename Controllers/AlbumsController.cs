@@ -46,7 +46,7 @@ namespace Albums.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Date")]Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Date")] Album album)
         {
             if (ModelState.IsValid)
             {
@@ -55,5 +55,6 @@ namespace Albums.Controllers
                 return RedirectToAction("Index");
             }
             return View(album);
+        }
     }
 }
