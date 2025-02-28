@@ -15,9 +15,10 @@
 	</thead>
 
 	<tbody>
-		<tr>
+		
 			@foreach (var album in Model)
 			{
+			<tr>
 				<td>@album.Name</td>
 				<td>@album.Date.ToString();</td>
 				<td><a asp-action="Edit" asp-route-id="@album.Id">Editar</a></td>
@@ -25,13 +26,9 @@
 				<td>
 					<a asp-action="Delete" asp-route-id="@album.Id">Eliminar</a>
 				</td>*@
-
-				
-				
-
-
+			</tr>	
 			}
-		</tr>
+		
 	</tbody>
 
 </table>
