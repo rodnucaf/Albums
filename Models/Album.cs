@@ -11,6 +11,6 @@ namespace Albums.Models
         public int? GenreId { get; set; }
 
         [ForeignKey("GenreId")]
-        public string? GenreName { get; set; }
+        public Genre? GenreName { get; set; }
     }
 }
