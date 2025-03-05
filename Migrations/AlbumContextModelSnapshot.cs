@@ -30,8 +30,15 @@ namespace Albums.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("GenreId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -39,7 +46,57 @@ namespace Albums.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GenreId");
+
                     b.ToTable("Albums");
+                });
+
+            modelBuilder.Entity("Albums.Models.Genre", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Rock"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Shoegaze"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Dreampop"
+                        });
+                });
+
+            modelBuilder.Entity("Albums.Models.Album", b =>
+                {
+                    b.HasOne("Albums.Models.Genre", "GenreName")
+                        .WithMany("Albums")
+                        .HasForeignKey("GenreId");
+
+                    b.Navigation("GenreName");
+                });
+
+            modelBuilder.Entity("Albums.Models.Genre", b =>
+                {
+                    b.Navigation("Albums");
                 });
 #pragma warning restore 612, 618
         }
