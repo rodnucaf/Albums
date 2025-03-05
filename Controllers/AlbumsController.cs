@@ -30,7 +30,7 @@ namespace Albums.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id, Name, Date")] Album album) 
+        public async Task<IActionResult> Create([Bind("Id, Name, Date, GenreId")] Album album) 
         {
             if (ModelState.IsValid)
             {
