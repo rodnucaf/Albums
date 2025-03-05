@@ -1,6 +1,7 @@
 ﻿using Albums.Data;
 using Albums.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace Albums.Controllers
@@ -24,6 +25,7 @@ namespace Albums.Controllers
 
         public IActionResult Create()
         {
+            ViewData["Genres"] = new SelectList(_context.Genres, "Id", "Name");
             return View();
         }
 
