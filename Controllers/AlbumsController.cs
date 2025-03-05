@@ -42,13 +42,14 @@ namespace Albums.Controllers
         }
 
         public async Task<IActionResult> Edit(int id)
-        { 
+        {
+            ViewData["Genres"] = new SelectList(_context.Genres, "Id", "Name");
             var album = await _context.Albums.FirstOrDefaultAsync(a => a.Id == id);
             return View(album);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Date")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Date, GenreId")] Album album)
         {
             if (ModelState.IsValid)
             {
