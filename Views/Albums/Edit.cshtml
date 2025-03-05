@@ -15,6 +15,10 @@
 		<label for="Date">Fecha de lanzamiento</label>
 		<input type="date" class="form-control" asp-for="Date" />
 	</div>
+	<div class="form-group">
+		<label for="GenreId">Género</label>
+		<select asp-for="GenreId" asp-items="ViewBag.Genres" class="form-control"></select>
+	</div>
 
 	<button typeof="submit" class="btn btn-primary">Aceptar</button>
 </form>
