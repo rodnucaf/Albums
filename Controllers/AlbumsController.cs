@@ -30,7 +30,7 @@ namespace Albums.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Id, Name, Date, GenreId")] Album album) 
+        public async Task<IActionResult> Create([Bind("Id, Name, Author, Date, GenreId")] Album album) 
         {
             if (ModelState.IsValid)
             {
@@ -49,7 +49,7 @@ namespace Albums.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Date, GenreId")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id, Name, Author, Date, GenreId")] Album album)
         {
             if (ModelState.IsValid)
             {
