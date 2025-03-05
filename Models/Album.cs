@@ -8,7 +8,7 @@ namespace Albums.Models
         public string Name { get; set; }
         public DateTime Date { get; set; }
 
-        public int GenreId { get; set; }
+        public int? GenreId { get; set; }
 
         [ForeignKey("GenreId")]
         public string? GenreName { get; set; }
