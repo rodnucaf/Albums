@@ -9,6 +9,7 @@
 	<thead>
 		<tr>
 			<th>Título</th>
+			<th>Autor</th>
 			<th>Fecha de lanzamiento</th>
 			<th>Género</th>
 
@@ -21,6 +22,7 @@
 			{
 			<tr>
 				<td>@album.Name</td>
+				<td>@album.Author</td>
 				<td>@album.Date.ToString();</td>
 				<td>@album.GenreName?.Name;</td>
 				<td><a asp-action="Edit" asp-route-id="@album.Id">Editar</a></td>
