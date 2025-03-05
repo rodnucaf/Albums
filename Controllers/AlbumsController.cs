@@ -16,7 +16,7 @@ namespace Albums.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var album = await _context.Albums.ToListAsync();
+            var album = await _context.Albums.Include(g=>g.GenreName).ToListAsync();
 
 
             return View(album);
